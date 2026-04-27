@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Case Study | Phan Lý Huyền Trân</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .step-card { border-left: 4px solid #4f46e5; transition: all 0.3s ease; }
+        .step-card:hover { background: #f8fafc; transform: translateX(5px); }
+        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+        
+        .swiper-button-next, .swiper-button-prev { color: #fff !important; transform: scale(0.6); }
+        .swiper-pagination-bullet-active { background: #6366f1 !important; }
+
+        /* Tối ưu khung hình 1178 x 662 */
+        .img-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.2%; /* Tỷ lệ 662/1178 ≈ 56.2% */
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+        .img-container img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .img-container:hover img { transform: scale(1.03); }
+
+        /* Lightbox CSS */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img { max-width: 90%; max-height: 85%; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 leading-relaxed">
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Enlarged Dashboard">
+        <p class="absolute bottom-10 text-white/50 text-sm">Click anywhere to close</p>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 p-4">
+        <div class="container mx-auto max-w-5xl flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 text-indigo-600 font-bold hover:text-indigo-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.707 3.293a1 1 0 010 1.414L6.414 9H17a1 1 0 110 2H6.414l4.293 4.293a1 1 0 01-1.414 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                Back to Portfolio
+            </a>
+            <span class="text-slate-400 text-xs font-bold uppercase tracking-widest">Case Study: Airbnb Insights</span>
+        </div>
+    </nav>
+
+    <header class="gradient-bg py-20 text-white">
+        <div class="container mx-auto max-w-5xl px-6">
+            <span class="bg-white/20 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Data Analytics Project</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold mt-6 mb-4">AIRBNB MARKET INSIGHTS DASHBOARD</h1>
+            <p class="text-indigo-100 text-lg max-w-2xl leading-relaxed">
+                A strategic tool for hosts and investors to make data-driven decisions across Sydney, Paris, and Bangkok.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-5xl px-6 -mt-10 mb-20">
+        
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="md:col-span-2">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-8 h-8 bg-indigo-600 text-white rounded-lg flex items-center justify-center text-sm font-bold">01</span>
+                        Project Introduction
+                    </h2>
+                    <p class="text-slate-600 mb-6">
+                        This project provides a comprehensive overview of the Airbnb market across major global cities. The dashboard serves as a strategic tool for hosts and investors to analyze pricing optimization and customer behavior.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-50 rounded-xl">
+                            <p class="font-bold text-indigo-600">Pricing Optimization</p>
+                            <p class="text-sm text-slate-500 italic">Adjust rates based on geography & amenities.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl">
+                            <p class="font-bold text-indigo-600">Superhost Profiling</p>
+                            <p class="text-sm text-slate-500 italic">Identify key traits of top performers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-indigo-50 rounded-2xl p-6 border border-indigo-100">
+                    <h3 class="font-bold mb-4 text-indigo-900 uppercase text-xs tracking-widest">Technical Stack</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-slate-700 font-semibold">
+                            <span class="w-2 h-2 bg-indigo-500 rounded-full"></span> MS Excel (ETL Stage 1)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700 font-semibold">
+                            <span class="w-2 h-2 bg-indigo-500 rounded-full"></span> Power BI (ETL & Modeling)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700 font-semibold">
+                            <span class="w-2 h-2 bg-indigo-500 rounded-full"></span> Power Query (M Language)
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700 font-semibold">
+                            <span class="w-2 h-2 bg-indigo-500 rounded-full"></span> DAX Expressions
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold mb-10 text-center uppercase tracking-widest text-slate-400">Data Analytics Workflow</h2>
+            
+            <div class="space-y-6">
+                <div class="step-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <span class="text-indigo-600 font-black text-xs uppercase">Step 01</span>
+                            <h3 class="text-xl font-bold mt-1 mb-4 italic">Data Acquisition (Folder Connection)</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Instead of loading individual files, I used the <strong>Connect to Folder</strong> method. When new data is added, hitting "Refresh" updates all visuals automatically.
+                            </p>
+                            <span class="inline-block bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded">Automation Optimized</span>
+                        </div>
+                        <div class="md:w-1/3 bg-slate-100 rounded-xl flex items-center justify-center p-4">
+                             <img src="https://lh3.googleusercontent.com/d/1OaRnl-q_b4G0IJWowvKhoWvIVhdIrko0" class="rounded-lg shadow-sm" alt="Workflow 1">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <span class="text-indigo-600 font-black text-xs uppercase">Step 02</span>
+                            <h3 class="text-xl font-bold mt-1 mb-4 italic">Excel Pre-processing (ETL Stage 1)</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Applied nested <strong>SUBSTITUTE</strong>, <strong>TRIM</strong>, and <strong>CLEAN</strong> to sanitize data. Standardized all pricing to USD using dynamic formulas.
+                            </p>
+                        </div>
+                        <div class="md:w-1/3 bg-slate-100 rounded-xl flex items-center justify-center p-4">
+                             <img src="https://lh3.googleusercontent.com/d/13kvXf7KQmoNzXjR2x_Pg9F2pPQ4p9c1d" class="rounded-lg" alt="Workflow 2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <span class="text-indigo-600 font-black text-xs uppercase">Step 03</span>
+                            <h3 class="text-xl font-bold mt-1 mb-4 italic">Advanced Transformation & Modeling</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Used <strong>Unpivot</strong> in Power Query to normalize the Amenities column. Established a <strong>Star Schema</strong> for deep-dive analysis.
+                            </p>
+                        </div>
+                        <div class="md:w-1/3 bg-slate-100 rounded-xl flex items-center justify-center p-4">
+                             <img src="https://lh3.googleusercontent.com/d/1Ttz33VAMJZq_3zGJ-1UqpvMqHJ6pw--g" class="rounded-lg" alt="Workflow 3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white mb-10 shadow-2xl relative overflow-hidden">
+            <h2 class="text-3xl font-extrabold mb-10 border-l-4 border-indigo-500 pl-6 uppercase tracking-tight">Visualized Insights</h2>
+            <p class="text-slate-500 mb-6 -mt-6 pl-6 text-xs uppercase tracking-widest">Click images to enlarge</p>
+            
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                            <div class="space-y-6">
+                                <h3 class="text-3xl font-black text-indigo-400 italic">Sydney, Australia</h3>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Avg Price</p>
+                                        <p class="text-lg font-bold">$113</p>
+                                    </div>
+                                    <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Rating</p>
+                                        <p class="text-lg font-bold">88.75</p>
+                                    </div>
+                                    <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Amenities</p>
+                                        <p class="text-lg font-bold">25</p>
+                                    </div>
+                                </div>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    <strong>Insight:</strong> "Entire Place" listings dominate Sydney (57.88%), indicating high guest demand for privacy. Superhosts are densely concentrated in <strong>Sydney CBD</strong> and <strong>Pittwater</strong>.
+                                </p>
+                            </div>
+                            <div class="img-container rounded-xl shadow-2xl border border-white/10" onclick="openLightbox(this.querySelector('img').src)">
+                                <img src="https://lh3.googleusercontent.com/d/1hceCeCOg2HMos_bb1R7KF7YecuFBlBaw" alt="Sydney Dashboard">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                            <div class="space-y-6">
+                                <h3 class="text-3xl font-black text-amber-500 italic">Bangkok, Thailand</h3>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Avg Price</p>
+                                        <p class="text-lg font-bold">$56</p>
+                                    </div>
+                                    <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Rating</p>
+                                        <p class="text-lg font-bold">92.76</p>
+                                    </div>
+                                    <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Condos</p>
+                                        <p class="text-lg font-bold">20.7%</p>
+                                    </div>
+                                </div>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    <strong>Insight:</strong> A price-competitive market dominated by modern high-rise developments. <strong>Vadhana</strong> is the "Superhost Capital" (21 listings). Prices peak at $501 when amenities reach 40+, allowing hosts to escape "price wars."
+                                </p>
+                            </div>
+                            <div class="img-container rounded-xl shadow-2xl border border-white/10" onclick="openLightbox(this.querySelector('img').src)">
+                                <img src="https://lh3.googleusercontent.com/d/1OuvB58l9DjPd-pmfKnA5dmPsnxdYzjn2" alt="Bangkok Dashboard">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                            <div class="space-y-6">
+                                <h3 class="text-3xl font-black text-rose-500 italic">Paris, France</h3>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Avg Price</p>
+                                        <p class="text-lg font-bold">$115</p>
+                                    </div>
+                                    <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Rating</p>
+                                        <p class="text-lg font-bold">91.77</p>
+                                    </div>
+                                    <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Amenity</p>
+                                        <p class="text-lg font-bold">28</p>
+                                    </div>
+                                </div>
+                                <p class="text-slate-400 text-sm leading-relaxed">
+                                    <strong>Insight:</strong> Entire Place (76.24%) and Entire Apartment (67%): This is the market's defining feature. Travelers in Paris overwhelmingly prefer private, traditional apartments to experience the city like a local.
+                                </p>
+                            </div>
+                            <div class="img-container rounded-xl shadow-2xl border border-white/10" onclick="openLightbox(this.querySelector('img').src)">
+                                <img src="https://lh3.googleusercontent.com/d/10DC_ZrJLEWINvMFo53kUgf9jmPG64cqE" alt="Paris Dashboard">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <div class="bg-indigo-600 rounded-3xl p-10 text-white shadow-lg">
+            <h2 class="text-2xl font-black mb-6 italic uppercase tracking-tighter text-center">Project Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm opacity-90 leading-relaxed italic mb-10">
+                <p><strong>Competitive Survival:</strong> In Bangkok, the Superhost ratio is 16.88% (vs 10% in Sydney), proving that intense competition pushes hosts to elevate service as a survival strategy.</p>
+                <p><strong>Quality Prerequisite:</strong> In elite districts like Vadhana or Paris 1st Arr., Superhost status is a requirement for business travelers who prioritize guaranteed quality over cost.</p>
+            </div>
+            
+            <p class="text-center text-xs font-bold uppercase tracking-widest mb-6 text-indigo-200">Download Raw Data (Excel)</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://drive.google.com/uc?export=download&id=1bIfhb6L8WgKoH-I4tp1OMZXTM210VJ-Q" target="_blank" class="bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-600 transition flex items-center gap-2">
+                    📊 Bangkok Dataset
+                </a>
+                <a href="https://drive.google.com/uc?export=download&id=1_44M3MWQfi9aY2K80mD97zf9nvF-rJeN" target="_blank" class="bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-600 transition flex items-center gap-2">
+                    📊 Paris Dataset
+                </a>
+                <a href="https://drive.google.com/uc?export=download&id=1NqgRwdZpCUuugbYwGUVkGJol0dUwEyZv" target="_blank" class="bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-600 transition flex items-center gap-2">
+                    📊 Sydney Dataset
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="py-12 border-t border-slate-200 text-center text-slate-400 text-xs">
+        © 2026 Developed by Phan Lý Huyền Trân | All Data Standardized to USD
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            pagination: { el: ".swiper-pagination", clickable: true },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            autoplay: { delay: 6000, disableOnInteraction: false },
+        });
+
+        // Lightbox Logic
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            lbImg.src = src;
+            lb.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Khóa cuộn trang khi zoom
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Mở lại cuộn trang
+        }
+    </script>
+</body>
+</html>
