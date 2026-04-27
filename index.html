@@ -99,6 +99,7 @@
             projects: [
                 {
                     title: "Airbnb Market Analysis Dashboard",
+                    link: "airbnb.html",
                     time: "March 2026",
                     desc: "Cleaning large datasets, integrating Data Models in Power BI, and utilizing DAX for custom measures to support market entry decisions.",
                     image: "https://lh3.googleusercontent.com/d/1u8rqZ2g1Qd20cDSJha0jsqx5qSYCvI6h",
@@ -193,9 +194,9 @@
                         <h3 class="text-lg font-bold mt-1 text-slate-800">${p.title}</h3>
                         <p class="text-slate-500 text-sm mt-3 leading-relaxed flex-1">${p.desc}</p>
                         <div class="mt-6 pt-4 border-t border-slate-50">
-                            <button class="text-xs font-bold text-indigo-600 flex items-center gap-1 group">
-                                VIEW CASE STUDY <span class="group-hover:translate-x-1 transition-transform">→</span>
-                            </button>
+                            <a href="${p.link}" class="text-xs font-bold text-indigo-600 flex items-center gap-1 group">
+                            VIEW CASE STUDY <span class="group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
                         </div>
                     </div>
                 </div>
