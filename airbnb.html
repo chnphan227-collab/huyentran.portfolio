@@ -44,6 +44,24 @@
             cursor: zoom-out;
         }
         #lightbox img { max-width: 90%; max-height: 85%; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+
+        /* Responsive Iframe Container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 leading-relaxed">
@@ -133,7 +151,7 @@
                             <span class="inline-block bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded">Automation Optimized</span>
                         </div>
                         <div class="md:w-1/3 bg-slate-100 rounded-xl flex items-center justify-center p-4">
-                             <img src="https://lh3.googleusercontent.com/d/1OaRnl-q_b4G0IJWowvKhoWvIVhdIrko0" class="rounded-lg shadow-sm" alt="Workflow 1">
+                             <img src="https://raw.githubusercontent.com/chnphan227-collab/huyentran.portfolio/refs/heads/main/image/ETL.jpg" class="rounded-lg shadow-sm">
                         </div>
                     </div>
                 </div>
@@ -148,7 +166,7 @@
                             </p>
                         </div>
                         <div class="md:w-1/3 bg-slate-100 rounded-xl flex items-center justify-center p-4">
-                             <img src="https://lh3.googleusercontent.com/d/13kvXf7KQmoNzXjR2x_Pg9F2pPQ4p9c1d" class="rounded-lg" alt="Workflow 2">
+                             <img src="https://raw.githubusercontent.com/chnphan227-collab/huyentran.portfolio/refs/heads/main/image/exce%3B.jpg" class="rounded-lg shadow-sm">
                         </div>
                     </div>
                 </div>
@@ -163,7 +181,7 @@
                             </p>
                         </div>
                         <div class="md:w-1/3 bg-slate-100 rounded-xl flex items-center justify-center p-4">
-                             <img src="https://lh3.googleusercontent.com/d/1Ttz33VAMJZq_3zGJ-1UqpvMqHJ6pw--g" class="rounded-lg" alt="Workflow 3">
+                             <img src="https://raw.githubusercontent.com/chnphan227-collab/huyentran.portfolio/refs/heads/main/image/star%20schema.jpg" class="rounded-lg shadow-sm">
                         </div>
                     </div>
                 </div>
@@ -199,7 +217,7 @@
                                 </p>
                             </div>
                             <div class="img-container rounded-xl shadow-2xl border border-white/10" onclick="openLightbox(this.querySelector('img').src)">
-                                <img src="https://lh3.googleusercontent.com/d/1hceCeCOg2HMos_bb1R7KF7YecuFBlBaw" alt="Sydney Dashboard">
+                                <img src="https://raw.githubusercontent.com/chnphan227-collab/huyentran.portfolio/refs/heads/main/image/sydney.jpg" alt="Sydney Dashboard">
                             </div>
                         </div>
                     </div>
@@ -227,7 +245,7 @@
                                 </p>
                             </div>
                             <div class="img-container rounded-xl shadow-2xl border border-white/10" onclick="openLightbox(this.querySelector('img').src)">
-                                <img src="https://lh3.googleusercontent.com/d/1OuvB58l9DjPd-pmfKnA5dmPsnxdYzjn2" alt="Bangkok Dashboard">
+                                <img src="https://raw.githubusercontent.com/chnphan227-collab/huyentran.portfolio/refs/heads/main/image/bangkok.jpg" alt="Bangkok Dashboard">
                             </div>
                         </div>
                     </div>
@@ -239,23 +257,23 @@
                                 <div class="grid grid-cols-3 gap-4">
                                     <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
                                         <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Avg Price</p>
-                                        <p class="text-lg font-bold">$115</p>
+                                        <p class="text-lg font-bold">$150+</p>
                                     </div>
                                     <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
-                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Rating</p>
-                                        <p class="text-lg font-bold">91.77</p>
+                                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Districts</p>
+                                        <p class="text-lg font-bold">1-8</p>
                                     </div>
                                     <div class="text-center bg-white/5 p-3 rounded-lg border border-white/10">
                                         <p class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">Amenity</p>
-                                        <p class="text-lg font-bold">28</p>
+                                        <p class="text-lg font-bold">Aesthetic</p>
                                     </div>
                                 </div>
                                 <p class="text-slate-400 text-sm leading-relaxed">
-                                    <strong>Insight:</strong> Entire Place (76.24%) and Entire Apartment (67%): This is the market's defining feature. Travelers in Paris overwhelmingly prefer private, traditional apartments to experience the city like a local.
+                                    <strong>Insight:</strong> Premium market centered around landmarks. Central <strong>Arrondissements 1-8</strong> show dense Superhost concentration. Iconic Haussmann-style apartments dominate the segment due to historic urban fabric.
                                 </p>
                             </div>
                             <div class="img-container rounded-xl shadow-2xl border border-white/10" onclick="openLightbox(this.querySelector('img').src)">
-                                <img src="https://lh3.googleusercontent.com/d/10DC_ZrJLEWINvMFo53kUgf9jmPG64cqE" alt="Paris Dashboard">
+                                <img src="https://raw.githubusercontent.com/chnphan227-collab/huyentran.portfolio/refs/heads/main/image/paris.jpg" alt="Paris Dashboard">
                             </div>
                         </div>
                     </div>
@@ -264,25 +282,32 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
             </div>
+
+            <!-- New Section: Interactive Analytics Report -->
+            <div class="mt-16 pt-10 border-t border-white/10">
+                <h3 class="text-2xl font-bold mb-2 text-indigo-400 uppercase tracking-tight text-center">Interactive Analytics Report</h3>
+                <p class="text-slate-400 text-center text-sm mb-8">Experience the live dashboard with real-time filtering and drill-down capabilities.</p>
+                <div class="video-container">
+                    <iframe title="Airbnb" src="https://app.powerbi.com/reportEmbed?reportId=0fd1bd4e-b106-47e9-9482-a1aecbae5080&autoAuth=true&ctid=3011a54b-0a5d-4929-bf02-a00787877c6a" frameborder="0" allowFullScreen="true"></iframe>
+                </div>
+            </div>
         </div>
 
         <div class="bg-indigo-600 rounded-3xl p-10 text-white shadow-lg">
-            <h2 class="text-2xl font-black mb-6 italic uppercase tracking-tighter text-center">Project Resources</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm opacity-90 leading-relaxed italic mb-10">
+            <h2 class="text-2xl font-black mb-6 italic uppercase tracking-tighter text-center">Global "Superhost" Advantage</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm opacity-90 leading-relaxed italic">
                 <p><strong>Competitive Survival:</strong> In Bangkok, the Superhost ratio is 16.88% (vs 10% in Sydney), proving that intense competition pushes hosts to elevate service as a survival strategy.</p>
                 <p><strong>Quality Prerequisite:</strong> In elite districts like Vadhana or Paris 1st Arr., Superhost status is a requirement for business travelers who prioritize guaranteed quality over cost.</p>
             </div>
-            
-            <p class="text-center text-xs font-bold uppercase tracking-widest mb-6 text-indigo-200">Download Raw Data (Excel)</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="https://drive.google.com/uc?export=download&id=1bIfhb6L8WgKoH-I4tp1OMZXTM210VJ-Q" target="_blank" class="bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-600 transition flex items-center gap-2">
-                    📊 Bangkok Dataset
+            <div class="flex justify-center mt-10">
+                <a href="https://docs.google.com/spreadsheets/d/1bIfhb6L8WgKoH-I4tp1OMZXTM210VJ-Q/edit?gid=1018523204#gid=1018523204" target="_blank" class="bg-white text-indigo-600 px-8 py-3 rounded-xl font-extrabold hover:scale-105 transition shadow-xl">
+                    📥 Bangkok Dataset
                 </a>
-                <a href="https://drive.google.com/uc?export=download&id=1_44M3MWQfi9aY2K80mD97zf9nvF-rJeN" target="_blank" class="bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-600 transition flex items-center gap-2">
-                    📊 Paris Dataset
+                <a href="https://docs.google.com/spreadsheets/d/1_44M3MWQfi9aY2K80mD97zf9nvF-rJeN/edit?gid=838401462#gid=838401462" target="_blank" class="bg-white text-indigo-600 px-8 py-3 rounded-xl font-extrabold hover:scale-105 transition shadow-xl">
+                    📥 Paris Dataset
                 </a>
-                <a href="https://drive.google.com/uc?export=download&id=1NqgRwdZpCUuugbYwGUVkGJol0dUwEyZv" target="_blank" class="bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white hover:text-indigo-600 transition flex items-center gap-2">
-                    📊 Sydney Dataset
+                <a href="https://docs.google.com/spreadsheets/d/1NqgRwdZpCUuugbYwGUVkGJol0dUwEyZv/edit?gid=1096324860#gid=1096324860" target="_blank" class="bg-white text-indigo-600 px-8 py-3 rounded-xl font-extrabold hover:scale-105 transition shadow-xl">
+                    📥 Sydney Dataset
                 </a>
             </div>
         </div>
