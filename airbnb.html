@@ -16,10 +16,11 @@
         .swiper-button-next, .swiper-button-prev { color: #fff !important; transform: scale(0.6); }
         .swiper-pagination-bullet-active { background: #6366f1 !important; }
 
+        /* Tối ưu khung hình 1178 x 662 */
         .img-container {
             position: relative;
             width: 100%;
-            padding-top: 56.2%; 
+            padding-top: 56.2%; /* Tỷ lệ 662/1178 ≈ 56.2% */
             overflow: hidden;
             cursor: zoom-in;
         }
@@ -31,6 +32,7 @@
         }
         .img-container:hover img { transform: scale(1.03); }
 
+        /* Lightbox CSS */
         #lightbox {
             display: none;
             position: fixed;
@@ -41,20 +43,24 @@
             justify-content: center;
             cursor: zoom-out;
         }
-        #lightbox img { max-width: 90%; max-height: 85%; border-radius: 8px; }
+        #lightbox img { max-width: 90%; max-height: 85%; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
 
-        /* Tối ưu khung nhúng Power BI */
-        .report-container {
+        /* Responsive Iframe Container */
+        .video-container {
             position: relative;
-            width: 100%;
-            padding-bottom: 50%; /* Tỷ lệ khung hình báo cáo */
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
+            max-width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
         }
-        .report-container iframe {
+        .video-container iframe {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            border: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -62,6 +68,7 @@
 
     <div id="lightbox" onclick="closeLightbox()">
         <img id="lightbox-img" src="" alt="Enlarged Dashboard">
+        <p class="absolute bottom-10 text-white/50 text-sm">Click anywhere to close</p>
     </div>
 
     <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 p-4">
@@ -88,7 +95,6 @@
 
     <main class="container mx-auto max-w-5xl px-6 -mt-10 mb-20">
         
-        <!-- Section 01: Introduction -->
         <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="md:col-span-2">
@@ -130,7 +136,6 @@
             </div>
         </div>
 
-        <!-- Section 02: Workflow -->
         <div class="mb-16">
             <h2 class="text-2xl font-bold mb-10 text-center uppercase tracking-widest text-slate-400">Data Analytics Workflow</h2>
             
@@ -150,17 +155,45 @@
                         </div>
                     </div>
                 </div>
-                <!-- ... các step 2, 3 giữ nguyên ... -->
+
+                <div class="step-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <span class="text-indigo-600 font-black text-xs uppercase">Step 02</span>
+                            <h3 class="text-xl font-bold mt-1 mb-4 italic">Excel Pre-processing (ETL Stage 1)</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                                Applied nested <strong>SUBSTITUTE</strong>, <strong>TRIM</strong>, and <strong>CLEAN</strong> to sanitize data. Standardized all pricing to USD using dynamic formulas.
+                            </p>
+                        </div>
+                        <div class="md:w-1/3 bg-slate-100 rounded-xl flex items-center justify-center p-4">
+                             <img src="https://lh3.googleusercontent.com/d/1abc2def...3" class="rounded-lg">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <span class="text-indigo-600 font-black text-xs uppercase">Step 03</span>
+                            <h3 class="text-xl font-bold mt-1 mb-4 italic">Advanced Transformation & Modeling</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Used <strong>Unpivot</strong> in Power Query to normalize the Amenities column. Established a <strong>Star Schema</strong> for deep-dive analysis.
+                            </p>
+                        </div>
+                        <div class="md:w-1/3 bg-slate-100 rounded-xl flex items-center justify-center p-4">
+                             <img src="https://lh3.googleusercontent.com/d/1abc2def...4" class="rounded-lg">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Section 03: Visualized Insights -->
         <div class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white mb-10 shadow-2xl relative overflow-hidden">
             <h2 class="text-3xl font-extrabold mb-10 border-l-4 border-indigo-500 pl-6 uppercase tracking-tight">Visualized Insights</h2>
+            <p class="text-slate-500 mb-6 -mt-6 pl-6 text-xs uppercase tracking-widest">Click images to enlarge</p>
             
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <!-- Slide 1: Sydney -->
                     <div class="swiper-slide">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                             <div class="space-y-6">
@@ -180,7 +213,7 @@
                                     </div>
                                 </div>
                                 <p class="text-slate-400 text-sm leading-relaxed">
-                                    <strong>Insight:</strong> "Entire Place" listings dominate Sydney (57.88%). Superhosts are densely concentrated in <strong>Sydney CBD</strong> and <strong>Pittwater</strong>.
+                                    <strong>Insight:</strong> "Entire Place" listings dominate Sydney (57.88%), indicating high guest demand for privacy. Superhosts are densely concentrated in <strong>Sydney CBD</strong> and <strong>Pittwater</strong>.
                                 </p>
                             </div>
                             <div class="img-container rounded-xl shadow-2xl border border-white/10" onclick="openLightbox(this.querySelector('img').src)">
@@ -189,7 +222,6 @@
                         </div>
                     </div>
 
-                    <!-- Slide 2: Bangkok -->
                     <div class="swiper-slide">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                             <div class="space-y-6">
@@ -209,7 +241,7 @@
                                     </div>
                                 </div>
                                 <p class="text-slate-400 text-sm leading-relaxed">
-                                    <strong>Insight:</strong> <strong>Vadhana</strong> is the "Superhost Capital" (21 listings). Prices peak at $501 when amenities reach 40+, escaping "price wars."
+                                    <strong>Insight:</strong> A price-competitive market dominated by modern high-rise developments. <strong>Vadhana</strong> is the "Superhost Capital" (21 listings). Prices peak at $501 when amenities reach 40+, allowing hosts to escape "price wars."
                                 </p>
                             </div>
                             <div class="img-container rounded-xl shadow-2xl border border-white/10" onclick="openLightbox(this.querySelector('img').src)">
@@ -218,7 +250,6 @@
                         </div>
                     </div>
 
-                    <!-- Slide 3: Paris -->
                     <div class="swiper-slide">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                             <div class="space-y-6">
@@ -238,7 +269,7 @@
                                     </div>
                                 </div>
                                 <p class="text-slate-400 text-sm leading-relaxed">
-                                    <strong>Insight:</strong> Central <strong>Arrondissements 1-8</strong> show dense Superhost concentration. Iconic Haussmann-style apartments dominate the segment.
+                                    <strong>Insight:</strong> Premium market centered around landmarks. Central <strong>Arrondissements 1-8</strong> show dense Superhost concentration. Iconic Haussmann-style apartments dominate the segment due to historic urban fabric.
                                 </p>
                             </div>
                             <div class="img-container rounded-xl shadow-2xl border border-white/10" onclick="openLightbox(this.querySelector('img').src)">
@@ -251,28 +282,22 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
             </div>
-        </div>
 
-        <!-- NEW: Interactive Power BI Report Section -->
-        <div class="mb-16">
-            <h2 class="text-2xl font-bold mb-6 text-slate-800 flex items-center gap-3">
-                <span class="w-2 h-8 bg-indigo-600 rounded-full"></span>
-                Interactive Analytics Report
-            </h2>
-            <div class="bg-white p-4 rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
-                <div class="report-container rounded-2xl">
+            <!-- New Section: Interactive Analytics Report -->
+            <div class="mt-16 pt-10 border-t border-white/10">
+                <h3 class="text-2xl font-bold mb-2 text-indigo-400 uppercase tracking-tight text-center">Interactive Analytics Report</h3>
+                <p class="text-slate-400 text-center text-sm mb-8">Experience the live dashboard with real-time filtering and drill-down capabilities.</p>
+                <div class="video-container">
                     <iframe title="Airbnb" src="https://app.powerbi.com/reportEmbed?reportId=0fd1bd4e-b106-47e9-9482-a1aecbae5080&autoAuth=true&ctid=3011a54b-0a5d-4929-bf02-a00787877c6a" frameborder="0" allowFullScreen="true"></iframe>
                 </div>
             </div>
-            <p class="text-center text-slate-400 text-xs mt-4 italic italic">Use the report filters to explore specific neighborhoods and property types.</p>
         </div>
 
-        <!-- Section 04: Key Takeaways -->
         <div class="bg-indigo-600 rounded-3xl p-10 text-white shadow-lg">
             <h2 class="text-2xl font-black mb-6 italic uppercase tracking-tighter text-center">Global "Superhost" Advantage</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm opacity-90 leading-relaxed italic">
-                <p><strong>Competitive Survival:</strong> In Bangkok, the Superhost ratio is 16.88% (vs 10% in Sydney), proving that intense competition pushes hosts to elevate service.</p>
-                <p><strong>Quality Prerequisite:</strong> In elite districts, Superhost status is a requirement for luxury travelers who prioritize guaranteed quality.</p>
+                <p><strong>Competitive Survival:</strong> In Bangkok, the Superhost ratio is 16.88% (vs 10% in Sydney), proving that intense competition pushes hosts to elevate service as a survival strategy.</p>
+                <p><strong>Quality Prerequisite:</strong> In elite districts like Vadhana or Paris 1st Arr., Superhost status is a requirement for business travelers who prioritize guaranteed quality over cost.</p>
             </div>
             <div class="flex justify-center mt-10">
                 <a href="LINK_DOWNLOAD_FILE_POWERBI_CUA_BAN" target="_blank" class="bg-white text-indigo-600 px-8 py-3 rounded-xl font-extrabold hover:scale-105 transition shadow-xl">
@@ -284,7 +309,7 @@
     </main>
 
     <footer class="py-12 border-t border-slate-200 text-center text-slate-400 text-xs">
-        © 2026 Developed Huyền Trân
+        © 2026 Developed by Phan Lý Huyền Trân | All Data Standardized to USD
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -296,18 +321,19 @@
             autoplay: { delay: 6000, disableOnInteraction: false },
         });
 
+        // Lightbox Logic
         function openLightbox(src) {
             const lb = document.getElementById('lightbox');
             const lbImg = document.getElementById('lightbox-img');
             lbImg.src = src;
             lb.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; // Khóa cuộn trang khi zoom
         }
 
         function closeLightbox() {
             const lb = document.getElementById('lightbox');
             lb.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'auto'; // Mở lại cuộn trang
         }
     </script>
 </body>
